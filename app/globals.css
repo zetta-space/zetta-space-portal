@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .form-control {
+    @apply w-full px-4 py-3 border-spacing-2 ring-1 ring-slate-300 rounded-md flex my-2.5;
+  }
+  .form-label {
+    @apply uppercase text-sm font-normal text-slate-500;
+  }
+  .btn-link {
+    @apply bg-white text-slate-950 border-slate-900 border-[1px] hover:text-white;
+  }
+}
