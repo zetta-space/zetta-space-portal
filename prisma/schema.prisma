@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "cockroachdb"
+  url      = env("DATABASE_URL")
+}
+
+model Article {
+  id             String      @id @db.Uuid
+  title          String      @db.String(100)
+  body           String
+  wordCount      BigInt
+  tagsId         String[]
+  isMultiLaguage Boolean     @default(false)
+  createdAt      DateTime    @default(now())
+  updatedOn      DateTime    @updatedAt
+  userId         String?     @db.Uuid
+  user           User?       @relation(fields: [userId], references: [id])
+  translation    Translate[]
+}
+
+model Translate {
+  id        String   @id @db.Uuid
+  title     String   @db.String(100)
+  articleId String   @db.Uuid
+  body      String
+  language  String   @db.Char(5)
+  createdAt DateTime @default(now())
+  updatedOn DateTime @updatedAt
+  article   Article  @relation(fields: [articleId], references: [id])
+}
+
+model Tag {
+  id        String   @id @db.Uuid
+  name      String   @db.String(50)
+  createdAt DateTime @default(now())
+  updatedOn DateTime @updatedAt
+}
+
+model User {
+  id            String    @id @db.Uuid
+  firstName     String    @db.String(100)
+  lastName      String?   @db.String(100)
+  email         String    @db.String(150)
+  numOfArticles Int?
+  reactions     Json?
+  createdAt     DateTime  @default(now())
+  updatedOn     DateTime  @updatedAt
+  article       Article[]
+}

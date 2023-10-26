@@ -58,7 +58,7 @@ const TranslateArticle = () => {
           <Card className="shadow-none">
             <CardHeader>
               <div className="w-full flex flex-row px-5 py-5 mb-7 justify-between items-center">
-                <h2 className="bg-slate-200 rounded-lg px-6 py-2.5 text-base capitalize space-x-2 font-normal">
+                <h2 className="bg-blue-200 text-blue-900 rounded-lg px-6 py-2.5 text-base capitalize space-x-2 font-normal">
                   article ID <span className="font-semibold">1234567890</span>
                 </h2>
                 <div className="flex flex-row items-center space-x-4">

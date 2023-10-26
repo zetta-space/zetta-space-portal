@@ -64,9 +64,12 @@ export default function Home() {
                       <TableCell>Paid</TableCell>
                       <TableCell>Credit Card</TableCell>
                       <TableCell className="text-right flex justify-end gap-3">
-                        <Button className="bg-slate-100 ring-2 ring-slate-800">
+                        <Link
+                          href={"/articles/add-translation"}
+                          className="bg-slate-100 ring-2 ring-slate-800 px-4 py-1 inline-flex justify-center items-center rounded-lg"
+                        >
                           <Languages className="w-5 h-5 mr-0 text-slate-700 group-hover:text-white" />
-                        </Button>
+                        </Link>
                         <Button className="bg-slate-950 ring-2 ring-slate-950 hover:ring-slate-600">
                           <Pencil className="w-5 h-5 mr-0" />
                         </Button>
