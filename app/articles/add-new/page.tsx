@@ -22,8 +22,16 @@ import React from "react";
 function AddNewArticle() {
   async function formAction(values: FormData) {
     "use server";
-    const response = await onSubmit(values);
-    console.log(values.get("title"));
+    // Append Values
+    const count = values.get("article-body")?.toString().length;
+    const wordCount: AppendBlob = {
+      name: "word-count",
+      value: count,
+    };
+
+    const response = await onSubmit(values, wordCount);
+    console.log(response);
+    // console.log(values.get("title"));
   }
 
   return (

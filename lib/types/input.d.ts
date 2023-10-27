@@ -2,7 +2,4 @@ type ArticleBody = {
     body: string
 }
 
-type ArticleHead = {
-    title: string
-    tags: string
-}
+type AppendBlob = { name: string; value: number | undefined; args?: any }
