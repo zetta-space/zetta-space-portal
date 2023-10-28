@@ -1,49 +1,41 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Check, ChevronsUpDown } from "lucide-react"
+import * as React from "react";
+import { Check, ChevronsUpDown } from "lucide-react";
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import {
   Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
-} from "@/components/ui/command"
+} from "@/components/ui/command";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
+} from "@/components/ui/popover";
 
 const frameworks = [
   {
-    value: "next.js",
-    label: "Next.js",
+    value: "sinhala",
+    label: "සිංහල",
   },
   {
-    value: "sveltekit",
-    label: "SvelteKit",
+    value: "tamil",
+    label: "தமிழ்",
   },
   {
-    value: "nuxt.js",
-    label: "Nuxt.js",
+    value: "english",
+    label: "English",
   },
-  {
-    value: "remix",
-    label: "Remix",
-  },
-  {
-    value: "astro",
-    label: "Astro",
-  },
-]
+];
 
 export function Combobox() {
-  const [open, setOpen] = React.useState(false)
-  const [value, setValue] = React.useState("")
+  const [open, setOpen] = React.useState(false);
+  const [value, setValue] = React.useState("");
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -56,13 +48,13 @@ export function Combobox() {
         >
           {value
             ? frameworks.find((framework) => framework.value === value)?.label
-            : "Select framework..."}
+            : "Select language..."}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
         <Command>
-          <CommandInput placeholder="Search framework..." />
+          <CommandInput placeholder="Search language..." />
           <CommandEmpty>No framework found.</CommandEmpty>
           <CommandGroup>
             {frameworks.map((framework) => (
@@ -70,8 +62,8 @@ export function Combobox() {
                 key={framework.value}
                 value={framework.value}
                 onSelect={(currentValue) => {
-                  setValue(currentValue === value ? "" : currentValue)
-                  setOpen(false)
+                  setValue(currentValue === value ? "" : currentValue);
+                  setOpen(false);
                 }}
               >
                 <Check
@@ -87,5 +79,5 @@ export function Combobox() {
         </Command>
       </PopoverContent>
     </Popover>
-  )
+  );
 }

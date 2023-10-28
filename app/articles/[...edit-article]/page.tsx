@@ -1,31 +1,26 @@
 import { Button } from "@/components/ui/button";
 import {
   Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
 } from "@/components/ui/card";
 import {
   Sheet,
+  SheetTrigger,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
-  SheetTrigger,
+  SheetDescription,
 } from "@/components/ui/sheet";
-import onSubmit from "@/services/actions/postArticle";
 import Link from "next/link";
-import React, { useState, FC } from "react";
-import { revalidatePath } from "next/cache";
-import { IActionState } from "@/lib/interfaces/IActionState";
-import { Toast } from "@/components/ui/toast";
-import { onSubmitArticle } from "@/services/handlers/onSubmit";
+import React from "react";
 
-function AddNewArticle() {
+function EditArticle() {
   return (
-    <>
+    <div>
       <nav className="flex flex-row justify-between items-center px-5 py-6 bg-gray-50 mb-8 shadow-md">
         <Link href={".."}>
           <Button className="capitalize">go back</Button>
@@ -64,7 +59,7 @@ function AddNewArticle() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <form action={onSubmitArticle}>
+              <form action={formAction}>
                 <div className="flex flex-col space-y-6">
                   <div className="flex flex-row justify-between items-center space-x-5">
                     <div className="flex-1">
@@ -125,8 +120,8 @@ function AddNewArticle() {
           </Card>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
-export default AddNewArticle;
+export default EditArticle;

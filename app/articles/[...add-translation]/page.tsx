@@ -24,7 +24,7 @@ const TranslateArticle = () => {
   return (
     <>
       <nav className="flex flex-row justify-between items-center px-5 py-6 bg-gray-50 mb-8 shadow-md">
-        <Link href={".."}>
+        <Link href={"/"}>
           <Button className="capitalize">go back</Button>
         </Link>
         <div className="flex flex-row space-x-4 items-center">
@@ -97,23 +97,14 @@ const TranslateArticle = () => {
                   <Combobox />
                 </div>
               </div>
-            </CardContent>
-            <CardFooter></CardFooter>
-          </Card>
-        </div>
-        <div className="mb-5">
-          <Card>
-            <CardHeader>
-              <CardTitle className="capitalize font-medium text-2xl text-slate-800">
-                article body
-              </CardTitle>
-              <CardDescription className="text-xs">
-                Add your translation ⚫⚪
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <form action="">
-                <div>
+              <div className="flex flex-col mt-8">
+                <CardTitle className="capitalize font-medium text-2xl text-slate-800">
+                  article body
+                </CardTitle>
+                <CardDescription className="text-xs">
+                  Add your translation ⚫⚪
+                </CardDescription>
+                <div className="my-7">
                   <textarea
                     className="flex min-h-[1000px] w-full ring-1 ring-slate-300 rounded-md focus-visible:outline-offset-2 focus-visible:outline-slate-800 px-4 py-3"
                     name="textArea"
@@ -135,8 +126,9 @@ const TranslateArticle = () => {
                     Reset
                   </Button>
                 </div>
-              </form>
+              </div>
             </CardContent>
+            <CardFooter></CardFooter>
           </Card>
         </div>
       </div>

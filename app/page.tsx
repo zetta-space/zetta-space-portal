@@ -1,3 +1,4 @@
+import TableCells from "@/components/TableCells";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -15,11 +16,13 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import listArticles from "@/services/actions/listArticles";
 import { Languages, Pencil } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 
-export default function Home() {
+export default async function Home() {
+  const { response } = await listArticles();
+
   return (
     <main className="w-full flex flex-row justify-between items-start flex-wrap pl-[16.666%] pr-0">
       <div className="w-[15%] bg-slate-100 h-screen fixed left-0 top-0">
@@ -52,29 +55,17 @@ export default function Home() {
                   <TableCaption>all resent data goes here</TableCaption>
                   <TableHeader>
                     <TableRow>
-                      <TableHead>Invoice</TableHead>
-                      <TableHead>Status</TableHead>
-                      <TableHead>Method</TableHead>
+                      <TableHead>Title</TableHead>
+                      <TableHead>Body</TableHead>
+                      <TableHead>Word Count</TableHead>
+                      <TableHead>Last Updated</TableHead>
                       <TableHead className="text-right">Action</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    <TableRow>
-                      <TableCell className="font-medium">INV001</TableCell>
-                      <TableCell>Paid</TableCell>
-                      <TableCell>Credit Card</TableCell>
-                      <TableCell className="text-right flex justify-end gap-3">
-                        <Link
-                          href={"/articles/add-translation"}
-                          className="bg-slate-100 ring-2 ring-slate-800 px-4 py-1 inline-flex justify-center items-center rounded-lg"
-                        >
-                          <Languages className="w-5 h-5 mr-0 text-slate-700 group-hover:text-white" />
-                        </Link>
-                        <Button className="bg-slate-950 ring-2 ring-slate-950 hover:ring-slate-600">
-                          <Pencil className="w-5 h-5 mr-0" />
-                        </Button>
-                      </TableCell>
-                    </TableRow>
+                    {response.map((articles: any) => {
+                      return <TableCells key={articles.id} {...articles} />;
+                    })}
                   </TableBody>
                 </Table>
               </div>
