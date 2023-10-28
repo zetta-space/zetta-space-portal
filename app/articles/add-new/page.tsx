@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -17,7 +18,8 @@ import {
 } from "@/components/ui/sheet";
 import onSubmit from "@/services/actions/postArticle";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+import { revalidatePath } from "next/cache";
 
 function AddNewArticle() {
   async function formAction(values: FormData) {
@@ -31,8 +33,11 @@ function AddNewArticle() {
 
     const response = await onSubmit(values, wordCount);
     console.log(response);
+    // revalidatePath("/");
     // console.log(values.get("title"));
   }
+
+  const [state, setState] = useState([]);
 
   return (
     <>

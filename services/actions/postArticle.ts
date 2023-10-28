@@ -1,4 +1,5 @@
 import { z } from "zod";
+import createArticleAsync from "../queries/CreateArticleAsync";
 
 export default async function onSubmit(params: FormData, append: AppendBlob) {
     "use server"
@@ -16,8 +17,10 @@ export default async function onSubmit(params: FormData, append: AppendBlob) {
             body: params.get("article-body")
         })
         // Run Query
+        const response = await createArticleAsync(data, append)
         // Return response if saved successfully
-        return data;
+        return { success: "Saved Successfully", response: response };
+
     } catch (error: any) {
         return error
     }
