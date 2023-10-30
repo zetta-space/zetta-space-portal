@@ -1,4 +1,4 @@
-import listArticleAsync from "../queries/ListArticleAsync"
+import listArticleAsync from "../queries/Article/ListArticleAsync"
 
 export default async function listArticles() {
     try {

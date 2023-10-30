@@ -15,7 +15,7 @@ import {
   SheetTitle,
   SheetDescription,
 } from "@/components/ui/sheet";
-import updateArticleAsync from "@/services/queries/UpdateArticleAsync";
+import updateArticleAsync from "@/services/queries/Article/UpdateArticleAsync";
 import Link from "next/link";
 import React from "react";
 
