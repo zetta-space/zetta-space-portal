@@ -1,13 +1,17 @@
+import IResponse from "@/lib/interfaces/IResponse";
 import { formModification } from "../handlers/inputModification";
+import createArticleAsync from "../queries/CreateArticleAsync";
 
-export async function postArticle(data: any, isTranslated?: boolean) {
+export async function postArticle(data: any, isTranslated?: boolean): Promise<IResponse> {
     try {
         const wordCount = formModification(data.body);
-        return { data, wordCount };
 
-        // const response = await createArticleAsync(data, wordCount)
-        // Return response if saved successfully
-        // return { success: true, response: response, msg: success };
+        const response = await createArticleAsync(data, wordCount)
+        return {
+            success: true,
+            message: "Saved Successfully",
+            data: response
+        }
 
     } catch (error: any) {
         return error

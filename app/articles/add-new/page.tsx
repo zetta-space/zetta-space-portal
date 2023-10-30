@@ -15,16 +15,23 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import formAction from "@/shared/formAction";
+import { submitValidation } from "@/middleware/InputValidation";
+import { postArticle } from "@/services/factories/onSubmit";
 import Link from "next/link";
-import React, { useRef } from "react";
+import React from "react";
 
 function AddNewArticle() {
   // const ref = useRef<HTMLFormElement>(null);
 
   async function submitArticle(values: FormData) {
     "use server";
-    const action = formAction(values);
+    const middleware = submitValidation(values);
+    if (middleware?.success) {
+      const article = postArticle(middleware.data);
+      console.log(article);
+    } else {
+      console.log("Error in values");
+    }
   }
 
   return (
