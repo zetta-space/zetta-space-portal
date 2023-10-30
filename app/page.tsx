@@ -16,7 +16,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import listArticles from "@/services/factories/listArticles";
+import listArticles from "@/services/factories/onFetch";
 import { Languages, Pencil } from "lucide-react";
 import Link from "next/link";
 

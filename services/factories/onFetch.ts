@@ -12,3 +12,6 @@ export default async function listArticles() {
     }
 }
 
+export async function getArticle(id: string) {
+
+}

@@ -15,19 +15,23 @@ import {
   SheetTitle,
   SheetDescription,
 } from "@/components/ui/sheet";
+import updateArticleAsync from "@/services/queries/UpdateArticleAsync";
 import Link from "next/link";
 import React from "react";
 
 function EditArticle() {
+  async function formAction(params: FormData) {
+    "use server";
+  }
   return (
     <div>
       <nav className="flex flex-row justify-between items-center px-5 py-6 bg-gray-50 mb-8 shadow-md">
-        <Link href={".."}>
+        <Link href={"/"}>
           <Button className="capitalize">go back</Button>
         </Link>
         <div>
           <h2 className="capitalize font-semibold text-2xl text-slate-800">
-            add new article
+            edit article
           </h2>
         </div>
         <div>
@@ -59,7 +63,7 @@ function EditArticle() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <form action={"..."}>
+              <form action={formAction}>
                 <div className="flex flex-col space-y-6">
                   <div className="flex flex-row justify-between items-center space-x-5">
                     <div className="flex-1">
@@ -69,6 +73,7 @@ function EditArticle() {
                       <input
                         type="text"
                         name="article-title"
+                        defaultValue={"Title"}
                         className="form-control"
                       />
                     </div>
@@ -79,6 +84,7 @@ function EditArticle() {
                       <input
                         type="text"
                         name="article-tags"
+                        defaultValue={"#tags"}
                         className="min-w-[380px] form-control"
                       />
                     </div>
@@ -96,6 +102,7 @@ function EditArticle() {
                       className="flex min-h-[1000px] w-full ring-1 ring-slate-300 rounded-md focus-visible:outline-offset-2 focus-visible:outline-slate-800 px-4 py-3"
                       id="textArea"
                       name="article-body"
+                      defaultValue={"article body"}
                     ></textarea>
                   </div>
                   <div className="flex flex-col items-center py-5 px-0">

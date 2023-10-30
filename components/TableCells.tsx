@@ -2,7 +2,6 @@ import React from "react";
 import { TableCell, TableRow } from "./ui/table";
 import Link from "next/link";
 import { Languages, Pencil } from "lucide-react";
-import { Button } from "./ui/button";
 
 function TableCells({
   id,
@@ -16,7 +15,10 @@ function TableCells({
       <TableCell className="font-medium">{title}</TableCell>
       <TableCell>{body?.slice(0, 25)}...</TableCell>
       <TableCell>{wordCount?.toString()}</TableCell>
-      <TableCell>{updatedOn?.getMinutes()} minutes ago</TableCell>
+      <TableCell>
+        {updatedOn?.getUTCDate()}/{updatedOn?.getUTCMonth()}/
+        {updatedOn?.getFullYear()}
+      </TableCell>
       <TableCell className="text-right flex justify-end gap-3">
         <Link
           href={`/articles/${id}/add-translation`}
@@ -24,9 +26,12 @@ function TableCells({
         >
           <Languages className="w-5 h-5 mr-0 text-slate-700 group-hover:text-white" />
         </Link>
-        <Button className="bg-slate-950 ring-2 ring-slate-950 hover:ring-slate-600">
-          <Pencil className="w-5 h-5 mr-0" />
-        </Button>
+        <Link
+          href={`/article/${id}/edit-article`}
+          className="bg-slate-950 ring-2 ring-slate-800 px-4 py-2 inline-flex justify-center items-center rounded-lg"
+        >
+          <Pencil className="w-5 h-5 mr-0 text-white" />
+        </Link>
       </TableCell>
     </TableRow>
   );
