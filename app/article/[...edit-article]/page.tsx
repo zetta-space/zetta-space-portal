@@ -59,7 +59,7 @@ function EditArticle() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <form action={formAction}>
+              <form action={"..."}>
                 <div className="flex flex-col space-y-6">
                   <div className="flex flex-row justify-between items-center space-x-5">
                     <div className="flex-1">

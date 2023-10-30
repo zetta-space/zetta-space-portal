@@ -1,5 +1,5 @@
 export interface IActionState {
-    formAction?: () => Promise<any>
+    formModification?: () => AppendBlob
     element?: React.JSX.Element
 }
 

@@ -15,15 +15,18 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import onSubmit from "@/services/actions/postArticle";
+import formAction from "@/shared/formAction";
 import Link from "next/link";
-import React, { useState, FC } from "react";
-import { revalidatePath } from "next/cache";
-import { IActionState } from "@/lib/interfaces/IActionState";
-import { Toast } from "@/components/ui/toast";
-import { onSubmitArticle } from "@/services/handlers/onSubmit";
+import React, { useRef } from "react";
 
 function AddNewArticle() {
+  // const ref = useRef<HTMLFormElement>(null);
+
+  async function submitArticle(values: FormData) {
+    "use server";
+    const action = formAction(values);
+  }
+
   return (
     <>
       <nav className="flex flex-row justify-between items-center px-5 py-6 bg-gray-50 mb-8 shadow-md">
@@ -64,7 +67,7 @@ function AddNewArticle() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <form action={onSubmitArticle}>
+              <form action={submitArticle}>
                 <div className="flex flex-col space-y-6">
                   <div className="flex flex-row justify-between items-center space-x-5">
                     <div className="flex-1">
