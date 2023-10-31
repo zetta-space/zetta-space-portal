@@ -44,6 +44,7 @@ model User {
   firstName     String    @db.String(100)
   lastName      String?   @db.String(100)
   email         String    @db.String(150)
+  password      String    @default("Oauth")
   numOfArticles Int?
   reactions     Json?
   createdAt     DateTime  @default(now())

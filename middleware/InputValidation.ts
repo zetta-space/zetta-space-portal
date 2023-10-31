@@ -17,7 +17,7 @@ export function submitValidation(params: FormData) {
         return { success, data }
 
     } catch (error) {
-
+        return { error }
     }
 }
 
@@ -40,6 +40,6 @@ export function translateValidation(params: FormData) {
         return { success, data }
 
     } catch (error) {
-
+        return { error }
     }
 }

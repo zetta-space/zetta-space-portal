@@ -21,8 +21,6 @@ import Link from "next/link";
 import React from "react";
 
 function AddNewArticle() {
-  // const ref = useRef<HTMLFormElement>(null);
-
   async function submitArticle(values: FormData) {
     "use server";
     const middleware = submitValidation(values);

@@ -1,6 +1,6 @@
-import type { Awaitable, NextAuthOptions, RequestInternal, User } from 'next-auth'
+import type { NextAuthOptions } from 'next-auth'
+import CredentialsProvider from 'next-auth/providers/credentials'
 import GoogleProfile from "next-auth/providers/google"
-import Credentials from 'next-auth/providers/credentials'
 
 export const options: NextAuthOptions = {
     providers: [
@@ -8,16 +8,28 @@ export const options: NextAuthOptions = {
             clientId: process.env.GOOGLE_CLIENT_ID as string,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
         }),
-        Credentials({
+        CredentialsProvider({
             name: "Credentials",
             credentials: {
-                username: { label: "Username", type: "text", placeholder: "jsmith" },
-                password: { label: "Password", type: "password" }
+                email: {
+                    label: "Email:",
+                    type: "text",
+                    placeholder: "mail@example.com"
+                },
+                password: {
+                    label: "Password:",
+                    type: "password",
+                }
             },
-            authorize: function (credentials, req) {
-               
+            async authorize(credentials) {
+                const user = { id: "42", name: "Test User", email: "test@gmail.com", password: "test123" }
+
+                if (credentials?.email === user.email && credentials?.password === user.password) {
+                    return user
+                } else {
+                    return null
+                }
             }
         })
     ],
-    pages: {}
 }
