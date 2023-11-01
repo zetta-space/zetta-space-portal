@@ -12,4 +12,7 @@
   .btn-link {
     @apply bg-white text-slate-950 border-slate-900 border-[1px] hover:text-white;
   }
+  .link-pop {
+    @apply flex justify-start gap-3 items-center w-full;
+  }
 }

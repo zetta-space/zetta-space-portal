@@ -20,7 +20,11 @@ import {
 import Link from "next/link";
 import React from "react";
 
-const TranslateArticle = () => {
+const TranslateArticle = ({
+  params,
+}: {
+  params: { translation: [id: string, props: string] };
+}) => {
   return (
     <>
       <nav className="flex flex-row justify-between items-center px-5 py-6 bg-gray-50 mb-8 shadow-md">
@@ -59,7 +63,10 @@ const TranslateArticle = () => {
             <CardHeader>
               <div className="w-full flex flex-row px-5 py-5 mb-7 justify-between items-center">
                 <h2 className="bg-blue-200 text-blue-900 rounded-lg px-6 py-2.5 text-base capitalize space-x-2 font-normal">
-                  article ID <span className="font-semibold">1234567890</span>
+                  article ID{" "}
+                  <span className="font-semibold">
+                    {params.translation[0].slice(0, 10)}...
+                  </span>
                 </h2>
                 <div className="flex flex-row items-center space-x-4">
                   <p>Tags</p>

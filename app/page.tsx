@@ -26,11 +26,11 @@ import Image from "next/image";
 
 export default async function Home() {
   const { response } = await listArticles();
-  // const session = await getServerSession(options);
+  const session = await getServerSession(options);
 
-  // if (!session) {
-  //   redirect("/api/auth/signin?callbackUrl=/");
-  // }
+  if (!session) {
+    redirect("/api/auth/signin?callbackUrl=/");
+  }
 
   return (
     <main className="w-full flex flex-row justify-between items-start flex-wrap pl-[16.666%] pr-0">
@@ -46,7 +46,7 @@ export default async function Home() {
             <p>Recently added</p>
           </div>
         </section>
-        {/* <div className="my-3 p-3.5 border-t-[0.5px] border-slate-500">
+        <div className="my-3 p-3.5 border-t-[0.5px] border-slate-500">
           <figure>
             <Image
               src={`${session.user?.image}`}
@@ -60,7 +60,7 @@ export default async function Home() {
             {session.user?.name}
           </h2>
           <p className="text-slate-500 text-sm">{session.user?.email}</p>
-        </div> */}
+        </div>
       </div>
       <div className="flex flex-grow flex-wrap flex-col overflow-y-hidden py-5 pr-8">
         <div>

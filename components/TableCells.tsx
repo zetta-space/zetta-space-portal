@@ -1,7 +1,8 @@
 import React from "react";
 import { TableCell, TableRow } from "./ui/table";
 import Link from "next/link";
-import { Languages, Pencil } from "lucide-react";
+import { Languages } from "lucide-react";
+import PopoverMenu from "./PopoverMenu";
 
 function TableCells({
   id,
@@ -20,18 +21,7 @@ function TableCells({
         {updatedOn?.getFullYear()}
       </TableCell>
       <TableCell className="text-right flex justify-end gap-3">
-        <Link
-          href={`/articles/${id}/add-translation`}
-          className="bg-slate-100 ring-2 ring-slate-800 px-4 py-1 inline-flex justify-center items-center rounded-lg"
-        >
-          <Languages className="w-5 h-5 mr-0 text-slate-700 group-hover:text-white" />
-        </Link>
-        <Link
-          href={`/article/${id}/edit-article`}
-          className="bg-slate-950 ring-2 ring-slate-800 px-4 py-2 inline-flex justify-center items-center rounded-lg"
-        >
-          <Pencil className="w-5 h-5 mr-0 text-white" />
-        </Link>
+        <PopoverMenu pathId={id} />
       </TableCell>
     </TableRow>
   );
