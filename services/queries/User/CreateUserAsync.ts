@@ -1,11 +1,11 @@
 import prisma from "@/shared/db.config";
 
-export default async function createUser(values: Register, other?: any) {
+export default async function createUser(values: Register) {
     const query = await prisma.user.create({
         data: {
             fullName: values.fullName,
             email: values.email,
-            bio: values.bio,
+            imageUrl: values.image,
             password: values.password
         }
     })

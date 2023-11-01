@@ -13,7 +13,7 @@ type Register = {
     fullName: string,
     email: string,
     password?: string,
-    bio?: string,
+    image?: string,
 }
 
 type AuthSession = {
