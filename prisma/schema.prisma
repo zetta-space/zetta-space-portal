@@ -41,10 +41,12 @@ model Tag {
 
 model User {
   id            String    @id @default(uuid()) @db.Uuid
-  firstName     String    @db.String(100)
-  lastName      String?   @db.String(100)
+  fullName      String    @db.String(100)
   email         String    @db.String(150)
-  password      String    @default("Oauth")
+  imageUrl      String?   @db.String()
+  password      String?   @db.String(50)
+  bio           String?   @db.String(100)
+  status        String?   @db.String(25)
   numOfArticles Int?
   reactions     Json?
   createdAt     DateTime  @default(now())

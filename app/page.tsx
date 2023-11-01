@@ -11,22 +11,32 @@ import {
   Table,
   TableBody,
   TableCaption,
-  TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
 import listArticles from "@/services/factories/onFetch";
-import { Languages, Pencil } from "lucide-react";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
 import { options } from "./api/auth/[...nextauth]/options";
 import { redirect } from "next/navigation";
 import Image from "next/image";
+import { authenticate } from "@/middleware/Authenticate";
+import { onRegisterUser } from "@/services/factories/onAuthenticate";
 
 export default async function Home() {
   const { response } = await listArticles();
   const session = await getServerSession(options);
+
+  {
+    const auth = await authenticate(session?.user?.email);
+    if (auth.error) {
+      await onRegisterUser({
+        name: session?.user?.name,
+        email: session?.user?.email,
+      });
+    }
+  }
 
   if (!session) {
     redirect("/api/auth/signin?callbackUrl=/");
@@ -76,7 +86,7 @@ export default async function Home() {
             <CardContent>
               <div className="mx-3">
                 <Table>
-                  <TableCaption>all resent data goes here</TableCaption>
+                  <TableCaption className="py-6">All resent data goes here</TableCaption>
                   <TableHeader>
                     <TableRow>
                       <TableHead>Title</TableHead>

@@ -1,6 +1,7 @@
 export default interface IResponse {
     success: boolean;
     message: string;
-    data?: any
+    data?: any,
+    error?: unknown | string,
     httpResponse?: number
 }

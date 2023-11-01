@@ -1,5 +1,5 @@
 import IResponse from "@/lib/interfaces/IResponse";
-import { formModification } from "../handlers/dataModification";
+import { formModification } from "../actions/dataModification";
 import createArticleAsync from "../queries/Article/CreateArticleAsync";
 
 export async function postArticle(data: any, isTranslated?: boolean): Promise<IResponse> {
