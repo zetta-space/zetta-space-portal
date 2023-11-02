@@ -23,15 +23,17 @@ model Article {
 }
 
 model Translate {
-  id             String   @id @default(uuid()) @db.Uuid
-  title          String   @db.String(100)
-  articleId      String   @db.Uuid
-  body           String
-  language       String   @db.Char(10)
-  translatedUser String?
-  createdAt      DateTime @default(now())
-  updatedOn      DateTime @updatedAt
-  article        Article  @relation(fields: [articleId], references: [id])
+  id               String   @id @default(uuid()) @db.Uuid
+  title            String   @db.String(100)
+  articleId        String   @db.Uuid
+  body             String
+  wordCount        BigInt
+  language         String   @db.Char(10)
+  translatedUserId User?    @relation(fields: [userId], references: [id])
+  userId           String?  @db.Uuid
+  createdAt        DateTime @default(now())
+  updatedOn        DateTime @updatedAt
+  article          Article  @relation(fields: [articleId], references: [id])
 }
 
 model Tag {
@@ -49,16 +51,17 @@ model Language {
 }
 
 model User {
-  id            String    @id @default(uuid()) @db.Uuid
-  fullName      String    @db.String(100)
-  email         String    @db.String(150)
-  imageUrl      String?   @db.String()
-  password      String?   @db.String(50)
-  bio           String?   @db.String(100)
-  status        String?   @db.String(25)
+  id            String      @id @default(uuid()) @db.Uuid
+  fullName      String      @db.String(100)
+  email         String      @db.String(150)
+  imageUrl      String?     @db.String()
+  password      String?     @db.String(50)
+  bio           String?     @db.String(100)
+  status        String?     @db.String(25)
   numOfArticles Int?
   reactions     Json?
-  createdAt     DateTime  @default(now())
-  updatedOn     DateTime  @updatedAt
+  createdAt     DateTime    @default(now())
+  updatedOn     DateTime    @updatedAt
   article       Article[]
+  translate     Translate[]
 }
