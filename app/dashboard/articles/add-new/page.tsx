@@ -16,7 +16,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { submitValidation } from "@/middleware/InputValidation";
-import { postArticle } from "@/services/factories/onSubmit";
+import { postArticle } from "@/services/resolvers/onSubmit";
 import Link from "next/link";
 import React from "react";
 

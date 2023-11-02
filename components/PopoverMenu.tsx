@@ -22,7 +22,7 @@ function PopoverMenu({ pathId }: { pathId: string }) {
         <DropdownMenuSeparator />
         <DropdownMenuItem>
           <Link
-            href={`/article/${pathId}/`}
+            href={`/dashboard/article/${pathId}/`}
             className="link-pop"
           >
             <ScanEye
@@ -34,7 +34,7 @@ function PopoverMenu({ pathId }: { pathId: string }) {
         </DropdownMenuItem>
         <DropdownMenuItem>
           <Link
-            href={`/article/${pathId}/add-translation`}
+            href={`/dashboard/article/${pathId}/add-translation`}
             className="link-pop"
           >
             <Languages className="w-5 h-5 mr-0 text-slate-700 font-extrabold" />
@@ -43,7 +43,7 @@ function PopoverMenu({ pathId }: { pathId: string }) {
         </DropdownMenuItem>
         <DropdownMenuItem>
           <Link
-            href={`/article/${pathId}/edit-article`}
+            href={`/dashboard/article/${pathId}/edit-article`}
             className="link-pop"
           >
             <FileEdit

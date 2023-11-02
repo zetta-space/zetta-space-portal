@@ -11,7 +11,7 @@ export function unAuthenticate() {
 
 export async function onRegisterUser(user: AuthSession, other?: any): Promise<IResponse> {
     try {
-        const query = await createUser({ fullName: user.name as string, email: user.email as string }, other);
+        const query = await createUser({ fullName: user.name as string, email: user.email as string });
         return {
             success: true,
             message: "Successfully Saved",
