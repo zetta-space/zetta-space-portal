@@ -15,14 +15,14 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import listArticles from "@/services/factories/onFetch";
+import listArticles from "@/services/resolvers/onFetch";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
 import { options } from "./api/auth/[...nextauth]/options";
 import { redirect } from "next/navigation";
 import Image from "next/image";
 import { authenticate } from "@/middleware/Authenticate";
-import { onRegisterUser } from "@/services/factories/onAuthenticate";
+import { onRegisterUser } from "@/services/resolvers/onAuthenticate";
 
 export default async function Home() {
   const { response } = await listArticles();
